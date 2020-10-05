@@ -47,4 +47,45 @@ public class AlgorithmControllerTest {
         }
 
     }
+
+    @Test
+    public void givenInValidInput_EmptyName_whenAdded_shouldReturnValidResponse(){
+        try {
+            this.inputValue=new ArrayList();
+            this.inputValue.add(1);
+            this.inputValue.add(2);
+            this.inputValue.add(3);
+            this.inputValue.add(4);
+            this.gson=new Gson();
+            this.algorithmDTO=new AlgorithmDTO("",this.inputValue);
+            MvcResult mvcResult=this.mockMvc.perform(post("/algo")
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .content(new Gson().toJson(this.algorithmDTO))).andReturn();
+            Assertions.assertEquals(200,mvcResult.getResponse().getStatus());
+            Assertions.assertEquals("Algorithm Name can be empty.",mvcResult.getResponse().getContentAsString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    @Test
+    public void givenValidInput_NullName_whenAdded_shouldReturnValidResponse(){
+        try {
+            this.inputValue=new ArrayList();
+            this.inputValue.add(1);
+            this.inputValue.add(2);
+            this.inputValue.add(3);
+            this.inputValue.add(4);
+            this.gson=new Gson();
+            this.algorithmDTO=new AlgorithmDTO(null,this.inputValue);
+            MvcResult mvcResult=this.mockMvc.perform(post("/algo")
+                    .contentType(MediaType.APPLICATION_JSON_VALUE)
+                    .content(new Gson().toJson(this.algorithmDTO))).andReturn();
+            Assertions.assertEquals(200,mvcResult.getResponse().getStatus());
+            Assertions.assertEquals("Algorithm Name can be null.",mvcResult.getResponse().getContentAsString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
