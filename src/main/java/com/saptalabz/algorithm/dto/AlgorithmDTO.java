@@ -12,8 +12,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class AlgorithmDTO {
 
-    @NotNull(message = "Algorithm Name can be null.")
-    @NotEmpty(message = "Algorithm Name can be empty.")
+    @NotNull(message = "Algorithm Name can be null/empty.")
+    @NotEmpty(message = "Algorithm Name can be null/empty.")
     public String name;
     public ArrayList inputValue;
 
