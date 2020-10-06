@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.jayway.jsonpath.spi.mapper.GsonMappingProvider;
 import com.saptalabz.algorithm.dto.AlgorithmDTO;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,15 +28,21 @@ public class AlgorithmControllerTest {
     public ArrayList inputValue;
     public Gson  gson;
 
+    @BeforeEach
+    void setUp() {
+        this.inputValue=new ArrayList();
+        this.inputValue.add(1);
+        this.inputValue.add(2);
+        this.inputValue.add(3);
+        this.inputValue.add(4);
+        this.gson=new Gson();
+
+    }
+
     @Test
     public void givenValidInput_whenAdded_shouldReturnValidResponse(){
         try {
-            this.inputValue=new ArrayList();
-            this.inputValue.add(1);
-            this.inputValue.add(2);
-            this.inputValue.add(3);
-            this.inputValue.add(4);
-            this.gson=new Gson();
+
             this.algorithmDTO=new AlgorithmDTO("Binary",this.inputValue);
             MvcResult mvcResult=this.mockMvc.perform(post("/algo")
             .contentType(MediaType.APPLICATION_JSON_VALUE)
