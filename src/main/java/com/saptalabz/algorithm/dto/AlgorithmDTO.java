@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @AllArgsConstructor
@@ -15,6 +16,6 @@ public class AlgorithmDTO {
     @NotNull(message = "Algorithm Name can be null/empty.")
     @NotEmpty(message = "Algorithm Name can be null/empty.")
     public String name;
-    public ArrayList inputValue;
+    public int input[]= new int[8];
 
 }

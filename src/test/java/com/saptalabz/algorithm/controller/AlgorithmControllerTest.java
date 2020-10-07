@@ -25,16 +25,12 @@ public class AlgorithmControllerTest {
     MockMvc mockMvc;
 
     public AlgorithmDTO algorithmDTO;
-    public ArrayList inputValue;
+    public int  input[]=new int[8];
     public Gson  gson;
 
     @BeforeEach
     void setUp() {
-        this.inputValue=new ArrayList();
-        this.inputValue.add(1);
-        this.inputValue.add(2);
-        this.inputValue.add(3);
-        this.inputValue.add(4);
+        this.input= new int[]{23, 43, 23, 34, 54, 45, 445, 12};
         this.gson=new Gson();
 
     }
@@ -43,7 +39,7 @@ public class AlgorithmControllerTest {
     public void givenValidInput_whenAdded_shouldReturnValidResponse(){
         try {
 
-            this.algorithmDTO=new AlgorithmDTO("Binary",this.inputValue);
+            this.algorithmDTO=new AlgorithmDTO("Binary",this.input);
             MvcResult mvcResult=this.mockMvc.perform(post("/algo")
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .content(new Gson().toJson(this.algorithmDTO))).andReturn();
@@ -59,7 +55,7 @@ public class AlgorithmControllerTest {
     public void givenInValidInput_EmptyName_whenAdded_shouldReturnValidResponse(){
         try {
 
-            this.algorithmDTO=new AlgorithmDTO("",this.inputValue);
+            this.algorithmDTO=new AlgorithmDTO("",this.input);
             MvcResult mvcResult=this.mockMvc.perform(post("/algo")
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .content(new Gson().toJson(this.algorithmDTO))).andReturn();
@@ -73,13 +69,9 @@ public class AlgorithmControllerTest {
     @Test
     public void givenValidInput_NullName_whenAdded_shouldReturnValidResponse(){
         try {
-            this.inputValue=new ArrayList();
-            this.inputValue.add(1);
-            this.inputValue.add(2);
-            this.inputValue.add(3);
-            this.inputValue.add(4);
+
             this.gson=new Gson();
-            this.algorithmDTO=new AlgorithmDTO(null,this.inputValue);
+            this.algorithmDTO=new AlgorithmDTO(null,this.input);
             MvcResult mvcResult=this.mockMvc.perform(post("/algo")
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .content(new Gson().toJson(this.algorithmDTO))).andReturn();

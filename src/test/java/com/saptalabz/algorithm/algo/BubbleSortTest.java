@@ -14,19 +14,12 @@ import java.util.Collection;
 public class BubbleSortTest<E> {
 
     private BubbleSort bubbleSort;
-    private ArrayList<E> inputList;
-    private ArrayList<Integer> integerArrayList;
+    private int input[];
 
     @BeforeEach
     void setUp() {
-        this.inputList = new ArrayList<>();
-        this.integerArrayList = new ArrayList<Integer>();
-        this.integerArrayList.add(7);
-        this.integerArrayList.add(5);
-        this.integerArrayList.add(8);
-        this.integerArrayList.add(0);
-        this.inputList.addAll((Collection<? extends E>) this.integerArrayList);
-        this.bubbleSort = new BubbleSort(this.inputList);
+        this.input =new int[]{23, 43, 23, 34, 54, 45, 445, 12};
+        this.bubbleSort = new BubbleSort(this.input);
 
     }
 

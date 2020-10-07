@@ -18,17 +18,15 @@ public class AlgorithmServiceTest {
     AlgorithmSeviceImplentation algorithmSeviceImplentation;
 
     AlgorithmDTO algorithmDTO;
-    public ArrayList inputValue;
+    int input[]=new int[8];
+
 
 
     @Test
     public void givenValidAlgorithmDto_whenAdded_shouldReturnVaildResponse() {
-        this.inputValue = new ArrayList();
-        this.inputValue.add(1);
-        this.inputValue.add(2);
-        this.inputValue.add(3);
-        this.inputValue.add(4);
-        this.algorithmDTO = new AlgorithmDTO("BubbleSort", this.inputValue);
+        this.input= new int[]{23, 43, 23, 34, 54, 45, 445, 12};
+
+        this.algorithmDTO = new AlgorithmDTO("BubbleSort", this.input);
 
         Mockito.when(this.algorithmSeviceImplentation.sortedList(this.algorithmDTO)).thenReturn("Sorted List Of Values.");
         Assertions.assertEquals("Sorted List Of Values.", this.algorithmSeviceImplentation.sortedList(this.algorithmDTO));

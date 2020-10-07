@@ -1,20 +1,33 @@
 package com.saptalabz.algorithm.algo;
 
-import com.google.gson.internal.$Gson$Preconditions;
 
 import java.util.ArrayList;
 
-public class BubbleSort<E> {
+/*
+ * @Author ROHAN KADAM
+ * @DATE 06 October 2020
+ * @Description
+ * Bubble Sort is sorting algorithm that used the technique of adjacency techniques
+ *
+ *
+ * */
 
-    private ArrayList<E> inputList;
 
-    public BubbleSort(ArrayList<E> inputList) {
-        this.inputList = inputList;
+public class BubbleSort {
+
+    private int input[];
+
+    public BubbleSort(int  input[]) {
+
+        this.input = input;
     }
 
-    public ArrayList<E> sortedList() {
-        int size=this.inputList.size();
+    public int[] sortedList() {
+        int size = this.input.length;
         System.out.println(size);
-        return this.inputList;
+
+
+
+        return this.input;
     }
 }
